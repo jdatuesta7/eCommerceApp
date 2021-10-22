@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">eCommerceApp</string>
+    <string name="fragment_home">Fragment Home</string>
+    <string name="fragment_cart">Fragment Cart</string>
+    <string name="fragment_discover">Fragment Discover</string>
+    <string name="fragment_wish_list">Fragment Wish List</string>
+    <string name="fragment_profile">Fragment Profile</string>
 </resources>
