@@ -1,8 +1,23 @@
 <resources>
     <string name="app_name">eCommerceApp</string>
-    <string name="fragment_home">Fragment Home</string>
-    <string name="fragment_cart">Fragment Cart</string>
+<!--    <string name="fragment_home">Inicio</string>-->
+    <string name="fragment_cart">Carrito de Compras</string>
     <string name="fragment_discover">Fragment Discover</string>
     <string name="fragment_wish_list">Fragment Wish List</string>
     <string name="fragment_profile">Fragment Profile</string>
+
+<!--    Home Strings-->
+    <string name="search">Buscar</string>
+    <string name="popularProductsTittle">Productos Populares</string>
+    <string name="bannerStockOut">BannerStockOut</string>
+    <string name="ImageItem1">Item1</string>
+    <string name="textItem1">PC Gamer</string>
+    <string name="priceItem1">1.560.000 $</string>
+    <string name="ImageItem2">Item2</string>
+    <string name="textItem2">Portatil AsusRog</string>
+    <string name="priceItem2">1.860.000 $</string>
+
+
+
+
 </resources>
