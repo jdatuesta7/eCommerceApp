@@ -73,6 +73,7 @@
         android:id="@+id/item1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="220dp"
@@ -92,7 +93,9 @@
                 android:layout_height="160dp"
                 android:contentDescription="@string/ImageItem1"
                 app:srcCompat="@drawable/pc_gamer"
-                tools:srcCompat="@drawable/pc_gamer" />
+                tools:srcCompat="@drawable/pc_gamer"
+                android:background="@null"
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -119,6 +122,7 @@
         android:id="@+id/item2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
         android:layout_marginStart="220dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="20dp"
