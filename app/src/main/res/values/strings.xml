@@ -18,6 +18,9 @@
     <string name="priceItem2">1.860.000 $</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="best_sellers"><b>Mas Vendidos</b></string>
+    <string name="title_category"><b>Categorias</b></string>
+    <string name="email_login">Correo Electronico</string>
 
 
 </resources>

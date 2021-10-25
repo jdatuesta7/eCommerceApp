@@ -3,21 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable-v24/ic_shopping_cart_white.xml" value="0.2890625" />
+        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable-v24/style_button_radius.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/ic_add.xml" value="0.2890625" />
+        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/ic_alternate_email.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/ic_arrow_back_ios.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/ic_favorite.xml" value="0.2890625" />
+        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/ic_lock.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/ic_remove.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/ic_search.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/ic_shopping_cart.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/style_border_et.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/style_radius.xml" value="0.2890625" />
+        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/text_hint_login.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/category_carousel.xml" value="0.2" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/fragment_cart.xml" value="0.33" />
-        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/fragment_discover.xml" value="0.5" />
+        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/fragment_category_carousel.xml" value="0.5" />
+        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/fragment_discover.xml" value="0.22" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/fragment_edit_text_search.xml" value="0.25" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/fragment_profile.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/fragment_wish_list.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/menu/bottom_menu.xml" value="0.27291666666666664" />
       </map>
