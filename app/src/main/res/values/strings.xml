@@ -3,7 +3,7 @@
     <!--    <string name="fragment_home">Inicio</string>-->
     <string name="fragment_cart">Carrito de Compras</string>
     <string name="fragment_discover">Fragment Discover</string>
-    <string name="fragment_wish_list">Fragment Wish List</string>
+    <string name="fragment_wish_list"><b>Lista de deseos</b></string>
     <string name="fragment_profile">Fragment Profile</string>
 
     <!--    Home Strings-->
@@ -21,6 +21,8 @@
     <string name="best_sellers"><b>Mas Vendidos</b></string>
     <string name="title_category"><b>Categorias</b></string>
     <string name="email_login">Correo Electronico</string>
-
+    <string name="item_1"><b>PC Gamer</b></string>
+    <string name="item_2"><b>Portatil AsusRog</b></string>
+    <string name="item_3"><b>Xbox One S</b></string>
 
 </resources>
