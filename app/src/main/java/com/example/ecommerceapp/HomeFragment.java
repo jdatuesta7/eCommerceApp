@@ -1,12 +1,30 @@
 package com.example.ecommerceapp;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.ecommerceapp.modelos.Product;
+import com.example.ecommerceapp.ui.adapter.ProductsAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,10 +73,72 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    RequestQueue requestQueue;
+    private static final String PRODUCTOS_URL = "https://central-park-ecommerce.herokuapp.com/api/listar_productos_tendencia_publicos";
+    private RecyclerView pRecyclerView;
+    private ProductsAdapter productAdapter;
+    private List<Product> products = new ArrayList<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //BACKEND HERE ----------
+        //Activity Context
+        Context c = root.getContext();
+
+        //Recycler view de Productos
+        pRecyclerView = root.findViewById(R.id.rvproductsHome);
+        pRecyclerView.setHasFixedSize(true);
+
+        //Asignamos el LayoutManager al RecyclerView
+        LinearLayoutManager pLayoutManager = new LinearLayoutManager(c);
+        pRecyclerView.setLayoutManager(pLayoutManager);
+
+        requestQueue = Volley.newRequestQueue(c);
+        jsonObjectRequest();
+
+        return root;
+    }
+
+    private void jsonObjectRequest(){
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                PRODUCTOS_URL,
+                null,
+                (Response.Listener<JSONObject>) response -> {
+                    try {
+                        JSONArray jsonArray = response.getJSONArray("data");
+                        int size = jsonArray.length();
+                        for (int i = 0; i<size; i++){
+                            try {
+                                JSONObject jsonObject = new JSONObject(jsonArray.get(i).toString());
+                                String titulo = jsonObject.getString("titulo");
+                                String categoria = jsonObject.getString("categoria");
+                                Double precio = jsonObject.getDouble("precio");
+                                String portada = jsonObject.getString("portada");
+
+                                this.products.add(new Product(titulo, precio , categoria, portada));
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        //Asignamos todos los datos de la lista al adaptador
+                        productAdapter = new ProductsAdapter(this.products);
+                        pRecyclerView.setAdapter(productAdapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
+                error -> {
+
+                }
+        );
+        requestQueue.add(jsonObjectRequest);
     }
 }

@@ -8,7 +8,7 @@
 
     <!--    Home Strings-->
     <string name="search">Buscar</string>
-    <string name="popularProductsTittle">Productos Populares</string>
+    <string name="popularProductsTittle"><b>Populares Populares</b></string>
     <string name="bannerStockOut">BannerStockOut</string>
     <string name="ImageItem1">Item1</string>
     <string name="textItem1">PC Gamer</string>
@@ -18,7 +18,7 @@
     <string name="priceItem2">1.860.000 $</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="best_sellers"><b>Mas Vendidos</b></string>
+    <string name="best_sellers"><b>Productos Disponibles</b></string>
     <string name="title_category"><b>Categorias</b></string>
     <string name="email_login">Correo Electronico</string>
     <string name="item_1"><b>PC Gamer</b></string>

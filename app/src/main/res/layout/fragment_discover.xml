@@ -7,7 +7,7 @@
     android:layout_centerHorizontal="true"
     tools:context=".DiscoverFragment">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
@@ -17,36 +17,46 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginStart="@dimen/horizontal_margin"
-                android:layout_marginTop="70dp"
-                android:layout_marginEnd="@dimen/horizontal_margin"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="8dp">
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerView3"
+                android:name="com.example.ecommerceapp.EditTextSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/title_category"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="250dp"-->
+<!--                android:layout_marginStart="@dimen/horizontal_margin"-->
+<!--                android:layout_marginTop="70dp"-->
+<!--                android:layout_marginEnd="@dimen/horizontal_margin"-->
+<!--                android:layout_marginBottom="16dp"-->
+<!--                app:cardBackgroundColor="@color/white"-->
+<!--                app:cardCornerRadius="8dp">-->
 
-                <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/fragmentContainerView2"
-                    android:name="com.example.ecommerceapp.CategoryCarouselFragment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/title_category"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="20sp" />-->
 
-            </com.google.android.material.card.MaterialCardView>
+<!--                <androidx.fragment.app.FragmentContainerView-->
+<!--                    android:id="@+id/fragmentContainerView2"-->
+<!--                    android:name="com.example.ecommerceapp.CategoryCarouselFragment"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="70dp"-->
+<!--                    android:layout_marginTop="30dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            </com.google.android.material.card.MaterialCardView>-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -56,193 +66,19 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                app:cardCornerRadius="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="@dimen/horizontal_margin"
-                android:layout_marginEnd="@dimen/horizontal_margin"
-                android:layout_height="wrap_content">
 
-                <LinearLayout
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvproducts"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:padding="10dp"
-                        android:src="@drawable/pc_gamer" />
-
-                    <LinearLayout
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/horizontal_margin"
-                            android:text="PC Gamer"
-                            android:textColor="@color/black"
-                            android:textSize="17sp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/horizontal_margin"
-                            android:text="2.450.000 $"
-                            android:textColor="@color/green" />
-
-
-
-                    </LinearLayout>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginStart="5dp"
-                        android:background="@drawable/style_button_radius"
-                        android:drawableEnd="@drawable/ic_shopping_cart_white"
-                        android:text="Añadir"
-                        />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                app:cardCornerRadius="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="@dimen/horizontal_margin"
-                android:layout_marginEnd="@dimen/horizontal_margin"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:padding="10dp"
-                        android:src="@drawable/portatil_asus_rog" />
-
-                    <LinearLayout
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/horizontal_margin"
-                            android:text="Portatil AsusRog"
-                            android:textColor="@color/black"
-                            android:textSize="17sp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/horizontal_margin"
-                            android:text="3.050.000 $"
-                            android:textColor="@color/green" />
-
-
-
-                    </LinearLayout>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginStart="5dp"
-                        android:background="@drawable/style_button_radius"
-                        android:drawableEnd="@drawable/ic_shopping_cart_white"
-                        android:text="Añadir"
-                        />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                app:cardCornerRadius="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="@dimen/horizontal_margin"
-                android:layout_marginEnd="@dimen/horizontal_margin"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:padding="10dp"
-                        android:src="@drawable/xbox_one_s" />
-
-                    <LinearLayout
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/horizontal_margin"
-                            android:text="Xbox One S"
-                            android:textColor="@color/black"
-                            android:textSize="17sp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/horizontal_margin"
-                            android:text="2.000.000 $"
-                            android:textColor="@color/green" />
-
-
-
-                    </LinearLayout>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginStart="5dp"
-                        android:background="@drawable/style_button_radius"
-                        android:drawableEnd="@drawable/ic_shopping_cart_white"
-                        android:text="Añadir"
-                        />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+                </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 
-    </ScrollView>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView3"
-        android:name="com.example.ecommerceapp.EditTextSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
