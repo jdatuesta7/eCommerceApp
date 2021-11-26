@@ -46,7 +46,7 @@
                     android:layout_height="25dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="70dp"
-                    android:background="@color/green"
+                    android:background="@color/design_default_color_primary"
                     android:text="2.150.000 $"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
@@ -136,7 +136,7 @@
                     android:layout_height="25dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="70dp"
-                    android:background="@color/green"
+                    android:background="@color/design_default_color_primary"
                     android:text="3.250.000 $"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
@@ -246,7 +246,7 @@
                     android:layout_height="25dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="70dp"
-                    android:background="@color/green"
+                    android:background="@color/design_default_color_primary"
                     android:text="1.950.000 $"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
@@ -392,7 +392,7 @@
         android:layout_height="50sp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="12dp"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/design_default_color_primary"
         android:src="@drawable/ic_arrow_back_ios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

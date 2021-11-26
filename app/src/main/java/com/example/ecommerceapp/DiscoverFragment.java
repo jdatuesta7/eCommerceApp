@@ -175,7 +175,7 @@ public class DiscoverFragment extends Fragment {
                 Request.Method.GET,
                 PRODUCTOS_URL,
                 null,
-                (Response.Listener<JSONObject>) response -> {
+                response -> {
                     try {
                         JSONArray jsonArray = response.getJSONArray("data");
                         int size = jsonArray.length();
@@ -186,8 +186,12 @@ public class DiscoverFragment extends Fragment {
                                 String categoria = jsonObject.getString("categoria");
                                 Double precio = jsonObject.getDouble("precio");
                                 String portada = jsonObject.getString("portada");
+                                String descripcion = jsonObject.getString("descripcion");
+                                String contenido = jsonObject.getString("contenido");
+                                String nombre_local = jsonObject.getJSONObject("admin").getString("nombre_local");
+                                String id_local = jsonObject.getJSONObject("admin").getString("id_local");
 
-                                this.products.add(new Product(titulo, precio , categoria, portada));
+                                this.products.add(new Product(titulo, precio , categoria, portada, descripcion, contenido, nombre_local, id_local));
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

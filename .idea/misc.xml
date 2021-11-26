@@ -18,6 +18,7 @@
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/style_border_et.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/style_radius.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable/text_hint_login.xml" value="0.2890625" />
+        <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/activity_detail_product.xml" value="0.33" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/category_carousel.xml" value="0.2" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/fragment_cart.xml" value="0.33" />
@@ -30,6 +31,7 @@
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/product_square_view.xml" value="0.33" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/layout/product_view.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/menu/bottom_menu.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Jhonatan SSD/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.27291666666666664" />
       </map>
     </option>
   </component>
