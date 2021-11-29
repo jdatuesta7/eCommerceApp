@@ -36,63 +36,32 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DiscoverFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class DiscoverFragment extends Fragment {
 
-
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ImageCarousel carousel;
+    private List<CarouselItem> list;
+    private TextView textView1;
+    RequestQueue requestQueue;
+    private static final String URL1 = "https://my-json-server.typicode.com/typicode/demo/comments";
+    private static final String URL2 = "https://my-json-server.typicode.com/typicode/demo/posts";
+    private static final String URL3 = "https://my-json-server.typicode.com/typicode/demo/db";
+    private static final String PRODUCTOS_URL = "https://central-park-ecommerce.herokuapp.com/api/listar_productos_publicos/";
+    private RecyclerView pRecyclerView;
+    private ProductsAdapter productAdapter;
+    private List<Product> products = new ArrayList<>();
 
     public DiscoverFragment() {
         // Required empty public constructor
-    }
-
-    public static DiscoverFragment newInstance(String param1, String param2) {
-        DiscoverFragment fragment = new DiscoverFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
 
     }
-
-//    private Button btnNextCategory, btnPreviousCategory;
-//    private EditText etSearch;
-    private ImageCarousel carousel;
-    private List<CarouselItem> list;
-
-    private TextView textView1;
-    RequestQueue requestQueue;
-
-    private static final String URL1 = "https://my-json-server.typicode.com/typicode/demo/comments";
-    private static final String URL2 = "https://my-json-server.typicode.com/typicode/demo/posts";
-    private static final String URL3 = "https://my-json-server.typicode.com/typicode/demo/db";
-    private static final String PRODUCTOS_URL = "https://central-park-ecommerce.herokuapp.com/api/listar_productos_publicos/";
-
-    private RecyclerView pRecyclerView;
-    private ProductsAdapter productAdapter;
-    private List<Product> products = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -102,7 +71,6 @@ public class DiscoverFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_discover, container, false);
 
         //My backend here
-
         Context c = root.getContext();
 
         //Recycler view de Productos
@@ -113,11 +81,7 @@ public class DiscoverFragment extends Fragment {
         LinearLayoutManager pLayoutManager = new LinearLayoutManager(c);
         pRecyclerView.setLayoutManager(pLayoutManager);
 
-
-
         requestQueue = Volley.newRequestQueue(c);
-//        stringReq();
-//        jsonArrayRequest();
         jsonObjectRequest();
 
         return root;
@@ -182,6 +146,7 @@ public class DiscoverFragment extends Fragment {
                         for (int i = 0; i<size; i++){
                             try {
                                 JSONObject jsonObject = new JSONObject(jsonArray.get(i).toString());
+                                String _id = jsonObject.getString("_id");
                                 String titulo = jsonObject.getString("titulo");
                                 String categoria = jsonObject.getString("categoria");
                                 Double precio = jsonObject.getDouble("precio");
@@ -191,7 +156,7 @@ public class DiscoverFragment extends Fragment {
                                 String nombre_local = jsonObject.getJSONObject("admin").getString("nombre_local");
                                 String id_local = jsonObject.getJSONObject("admin").getString("id_local");
 
-                                this.products.add(new Product(titulo, precio , categoria, portada, descripcion, contenido, nombre_local, id_local));
+                                this.products.add(new Product(_id, titulo, precio , categoria, portada, descripcion, contenido, nombre_local, id_local));
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

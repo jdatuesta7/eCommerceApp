@@ -115,6 +115,7 @@ public class HomeFragment extends Fragment {
                         for (int i = 0; i<size; i++){
                             try {
                                 JSONObject jsonObject = new JSONObject(jsonArray.get(i).toString());
+                                String _id = jsonObject.getString("_id");
                                 String titulo = jsonObject.getString("titulo");
                                 String categoria = jsonObject.getString("categoria");
                                 Double precio = jsonObject.getDouble("precio");
@@ -124,7 +125,7 @@ public class HomeFragment extends Fragment {
                                 String nombre_local = jsonObject.getJSONObject("admin").getString("nombre_local");
                                 String id_local = jsonObject.getJSONObject("admin").getString("id_local");
 
-                                this.products.add(new Product(titulo, precio , categoria, portada, descripcion, contenido, nombre_local, id_local));
+                                this.products.add(new Product(_id, titulo, precio , categoria, portada, descripcion, contenido, nombre_local, id_local));
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

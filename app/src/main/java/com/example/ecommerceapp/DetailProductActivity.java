@@ -8,6 +8,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.ArrayMap;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,11 +18,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ecommerceapp.modelos.Product;
+import com.example.ecommerceapp.ui.adapter.ProductsAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.NumberFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DetailProductActivity extends AppCompatActivity {
     private ImageView imgItemDetail;
@@ -31,8 +43,10 @@ public class DetailProductActivity extends AppCompatActivity {
     private TextView tvdLocal;
     private TextView tvdContenido;
     private Spinner sCantidad;
+    private String prodCantidad;
     private Product productDetails;
-
+    private static final String AGREGAR_CARRITO_URL = "https://central-park-ecommerce.herokuapp.com/api/agregar_carrito_cliente";
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +56,12 @@ public class DetailProductActivity extends AppCompatActivity {
 
         initViews();
         initValues();
+        requestQueue = Volley.newRequestQueue(this);
 
         Button btnCarrito = findViewById(R.id.btnCarrito);
         btnCarrito.setOnClickListener(v -> {
-            Toast.makeText(getApplicationContext(), "Producto añadido al carrito", Toast.LENGTH_LONG).show();
+
+            añadirProdCarrito();
         });
     }
 
@@ -87,7 +103,42 @@ public class DetailProductActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence>adapter= ArrayAdapter.createFromResource(this, R.array.cantidades, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         sCantidad.setAdapter(adapter);
+    }
 
-        sCantidad.getSelectedItem();
+    private void añadirProdCarrito(){
+        prodCantidad = sCantidad.getSelectedItem().toString();
+
+        // Mapeo de los pares clave-valor
+        HashMap<String, String> parametros = new HashMap();
+        parametros.put("producto", productDetails.get_id());
+        parametros.put("cliente", "619d9eca37acb0eafed979f7");
+        parametros.put("cantidad", prodCantidad);
+
+        // Header (Token)
+        Map<String, String> mHeaders = new ArrayMap<String, String>();
+        mHeaders.put("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTlkOWVjYTM3YWNiMGVhZmVkOTc5ZjciLCJub21icmVzIjoiQ2FtaWxvIiwiYXBlbGxpZG9zIjoiRGlheiIsImVtYWlsIjoiY2RpYXpAbWFpbC5jb20iLCJpYXQiOjE2MzgxNTYwODYsImV4cCI6MTYzODc2MDg4Nn0.j8l_iPbx6bwCtLwGiRrJsW5qoZOrvmTdVJbdsqQFUls");
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST,
+                AGREGAR_CARRITO_URL,
+                new JSONObject(parametros),
+                response -> {
+//                    try {
+//                        JSONObject res = new JSONObject((response.getJSONObject("data")));
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+                    Toast.makeText(getApplicationContext(), "Producto añadido al carrito", Toast.LENGTH_LONG).show();
+                },
+                error -> {
+                    Toast.makeText(getApplicationContext(), "Error :/", Toast.LENGTH_LONG).show();
+                }){
+            @Override
+            public Map<String, String> getHeaders() {
+                return mHeaders;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
     }
 }
