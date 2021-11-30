@@ -180,8 +180,6 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
 
         });
 
-
-
     }
 
     @Override
