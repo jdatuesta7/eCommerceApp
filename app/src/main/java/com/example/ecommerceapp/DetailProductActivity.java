@@ -123,12 +123,6 @@ public class DetailProductActivity extends AppCompatActivity {
                 AGREGAR_CARRITO_URL,
                 new JSONObject(parametros),
                 response -> {
-//                    try {
-//                        JSONObject res = new JSONObject((response.getJSONObject("data")));
-//
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
                     Toast.makeText(getApplicationContext(), "Producto añadido al carrito", Toast.LENGTH_LONG).show();
                 },
                 error -> {

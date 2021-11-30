@@ -53,15 +53,17 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         final Product product = productList.get(position);
         holder.tvTitulo.setText(product.getTitulo());
         holder.tvPrecio.setText(String.valueOf(product.getPrecio()));
+
         Picasso.get()
-                .load("https://central-park-ecommerce.herokuapp.com/api/obtener_portada/"+product.getPortada())
-                .placeholder(R.drawable.default_placeholder)
-                .into(holder.ivPortada);
-                holder.itemView.setOnClickListener(v -> {
-                    Intent intent = new Intent(holder.itemView.getContext(), DetailProductActivity.class);
-                    intent.putExtra("productDetails", product);
-                    holder.itemView.getContext().startActivity(intent);
-                });
+            .load("https://central-park-ecommerce.herokuapp.com/api/obtener_portada/"+product.getPortada())
+            .placeholder(R.drawable.default_placeholder)
+            .into(holder.ivPortada);
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), DetailProductActivity.class);
+            intent.putExtra("productDetails", product);
+            holder.itemView.getContext().startActivity(intent);
+        });
 //        holder.btnCarrito.setOnClickListener(v -> {
 //
 //        });
