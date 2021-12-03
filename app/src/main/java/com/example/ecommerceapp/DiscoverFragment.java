@@ -1,12 +1,8 @@
 package com.example.ecommerceapp;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -49,6 +46,8 @@ public class DiscoverFragment extends Fragment {
     private RecyclerView pRecyclerView;
     private ProductsAdapter productAdapter;
     private List<Product> products = new ArrayList<>();
+    public ImageButton btnBuscarProductos;
+    private EditText etBuscarProductos;
 
     public DiscoverFragment() {
         // Required empty public constructor
@@ -73,6 +72,16 @@ public class DiscoverFragment extends Fragment {
         //My backend here
         Context c = root.getContext();
 
+        btnBuscarProductos = root.findViewById(R.id.btnBuscarProducto);
+        etBuscarProductos = root.findViewById(R.id.etBuscarProductos);
+
+
+        btnBuscarProductos.setOnClickListener(v -> {
+            listarProductos();
+            Toast.makeText(c, "Busqueda realizada" + etBuscarProductos.getText().toString(), Toast.LENGTH_LONG).show();
+
+        });
+
         //Recycler view de Productos
         pRecyclerView = root.findViewById(R.id.rvproducts);
         pRecyclerView.setHasFixedSize(true);
@@ -82,21 +91,10 @@ public class DiscoverFragment extends Fragment {
         pRecyclerView.setLayoutManager(pLayoutManager);
 
         requestQueue = Volley.newRequestQueue(c);
-        jsonObjectRequest();
+        listarProductos();
 
         return root;
     }
-
-//    public List<Product> obtenerProductos(){
-//        List<Product> products = new ArrayList<>();
-//        products.add(new Product("Laptop AsusRog",3250000.0 , "Laptops", R.drawable.portatil_asus_rog));
-//        products.add(new Product("Laptop Huawei",3250000.0 , "Laptops", R.drawable.portatil_asus_rog));
-//        products.add(new Product("Laptop Xiaomi",3250000.0 , "Laptops", R.drawable.portatil_asus_rog));
-//        products.add(new Product("Laptop AMD",3250000.0 , "Laptops", R.drawable.portatil_asus_rog));
-//        products.add(new Product("Laptop Intel",3250000.0 , "Laptops", R.drawable.portatil_asus_rog));
-//
-//        return products;
-//    }
 
     private void stringReq(){
         StringRequest request = new StringRequest(
@@ -134,10 +132,11 @@ public class DiscoverFragment extends Fragment {
         requestQueue.add(jsonArrayRequest);
     }
 
-    private void jsonObjectRequest(){
+    private void listarProductos(){
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                PRODUCTOS_URL,
+                PRODUCTOS_URL + etBuscarProductos.getText().toString(),
                 null,
                 response -> {
                     try {
@@ -177,4 +176,6 @@ public class DiscoverFragment extends Fragment {
         );
         requestQueue.add(jsonObjectRequest);
     }
+
+
 }

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
+    android:onClick="btnBuscar"
     tools:context=".DiscoverFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -17,46 +18,36 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerView3"
-                android:name="com.example.ecommerceapp.EditTextSearch"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:orientation="horizontal">
 
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="250dp"-->
-<!--                android:layout_marginStart="@dimen/horizontal_margin"-->
-<!--                android:layout_marginTop="70dp"-->
-<!--                android:layout_marginEnd="@dimen/horizontal_margin"-->
-<!--                android:layout_marginBottom="16dp"-->
-<!--                app:cardBackgroundColor="@color/white"-->
-<!--                app:cardCornerRadius="8dp">-->
+                <EditText
+                    android:id="@+id/etBuscarProductos"
+                    android:layout_width="322dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/style_border_et"
+                    android:drawableStart="@drawable/ic_search"
+                    android:ems="10"
+                    android:hint="@string/search"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp" />
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="@string/title_category"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="20sp" />-->
+                <ImageButton
+                    android:id="@+id/btnBuscarProducto"
+                    android:layout_width="50dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/style_button_radius"
+                    android:onClick="btnBuscar"
+                    android:src="@drawable/ic_search" />
 
-<!--                <androidx.fragment.app.FragmentContainerView-->
-<!--                    android:id="@+id/fragmentContainerView2"-->
-<!--                    android:name="com.example.ecommerceapp.CategoryCarouselFragment"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="70dp"-->
-<!--                    android:layout_marginTop="30dp"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            </com.google.android.material.card.MaterialCardView>-->
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -66,14 +57,12 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvproducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvproducts"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 

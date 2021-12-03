@@ -100,6 +100,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
                         carritoList.remove(position);
                         notifyItemRemoved(position);
                         Toast.makeText(context, "Producto eliminado", Toast.LENGTH_LONG).show();
+
                     },
                     error -> {
                         Toast.makeText(context, "Error :/", Toast.LENGTH_LONG).show();

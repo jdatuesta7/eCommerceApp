@@ -24,6 +24,7 @@
     <string name="item_1"><b>PC Gamer</b></string>
     <string name="item_2"><b>Portatil AsusRog</b></string>
     <string name="item_3"><b>Xbox One S</b></string>
+    <string name="no_items_cart"><b>¡ NO HAY PRODUCTOS EN EL CARRITO !</b></string>
     <string-array name="cantidades">
         <item>1</item>
         <item>2</item>

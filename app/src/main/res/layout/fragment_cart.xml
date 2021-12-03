@@ -39,11 +39,25 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/tvSinProductos"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:textColor="@color/black"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:text="@string/no_items_cart"/>
+
+            <TextView
+                android:id="@+id/tvTotalTitulo"
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="15dp"
+
                 android:text="TOTALES"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -51,7 +65,8 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView3"
+                android:id="@+id/cvTotales"
+                android:visibility="invisible"
                 android:layout_width="380sp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -116,6 +131,7 @@
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

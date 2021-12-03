@@ -3,6 +3,7 @@ package com.example.ecommerceapp;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,7 +41,8 @@ public class CartFragment extends Fragment {
     private List<Carrito> carrito_cliente = new ArrayList<>();
     private CarritoAdapter carritoAdapter;
     private Context c;
-    private TextView tvTotal;
+    private TextView tvTotal, tvSinProductos, tvTituloTotal;
+    private CardView cvTotales;
 
     public CartFragment() {
         // Required empty public constructor
@@ -65,6 +67,9 @@ public class CartFragment extends Fragment {
 
         //TextViews
         tvTotal = root.findViewById(R.id.tvcTotal);
+        tvSinProductos = root.findViewById(R.id.tvSinProductos);
+        cvTotales = root.findViewById(R.id.cvTotales);
+        tvTituloTotal = root.findViewById(R.id.tvTotalTitulo);
 
         //Recycler view de Productos
         cRecyclerView = root.findViewById(R.id.rvCarritoCliente);
@@ -93,40 +98,46 @@ public class CartFragment extends Fragment {
                     try {
                         JSONArray jsonArray = response.getJSONArray("data");
                         int size = jsonArray.length();
-                        Double precioTotal = 0.0;
 
-                        for (int i = 0; i<size; i++){
-                            try {
-                                JSONObject jsonObject = new JSONObject(jsonArray.get(i).toString());
-                                String _id = jsonObject.getString("_id");
-//                                Toast.makeText(c, "Aumentar 1", Toast.LENGTH_LONG).show();
-                                Product producto = new Product();
-                                producto.set_id(jsonObject.getJSONObject("producto").getString("_id"));
-                                producto.setTitulo(jsonObject.getJSONObject("producto").getString("titulo"));
-                                producto.setPortada(jsonObject.getJSONObject("producto").getString("portada"));
-                                producto.setPrecio(jsonObject.getJSONObject("producto").getDouble("precio"));
-//                                precioTotal = precioTotal + producto.getPrecio();
+                        if (size != 0){
+                            Double precioTotal = 0.0;
+                            for (int i = 0; i<size; i++){
+                                try {
+                                    JSONObject jsonObject = new JSONObject(jsonArray.get(i).toString());
+                                    String _id = jsonObject.getString("_id");
+    //                                Toast.makeText(c, "Aumentar 1", Toast.LENGTH_LONG).show();
+                                    Product producto = new Product();
+                                    producto.set_id(jsonObject.getJSONObject("producto").getString("_id"));
+                                    producto.setTitulo(jsonObject.getJSONObject("producto").getString("titulo"));
+                                    producto.setPortada(jsonObject.getJSONObject("producto").getString("portada"));
+                                    producto.setPrecio(jsonObject.getJSONObject("producto").getDouble("precio"));
+    //                                precioTotal = precioTotal + producto.getPrecio();
 
-                                String cliente = jsonObject.getString("cliente");
-                                int cantidad = jsonObject.getInt("cantidad");
+                                    String cliente = jsonObject.getString("cliente");
+                                    int cantidad = jsonObject.getInt("cantidad");
 
-                                this.carrito_cliente.add(new Carrito(_id, cliente, cantidad, producto));
+                                    this.carrito_cliente.add(new Carrito(_id, cliente, cantidad, producto));
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
-                        }
 
-                        //Asignamos todos los datos de la lista al adaptador
-                        carritoAdapter = new CarritoAdapter(this.carrito_cliente);
-                        cRecyclerView.setAdapter(carritoAdapter);
+                            //Asignamos todos los datos de la lista al adaptador
+                            carritoAdapter = new CarritoAdapter(this.carrito_cliente);
+                            cRecyclerView.setAdapter(carritoAdapter);
 
-                        //Precio total
-                        for (Carrito c: carrito_cliente) {
-                            precioTotal += c.getProducto().getPrecio() * c.getCantidad();
+                            //Precio total
+                            for (Carrito c: carrito_cliente) {
+                                precioTotal += c.getProducto().getPrecio() * c.getCantidad();
+                            }
+                            NumberFormat formatoImporte = NumberFormat.getCurrencyInstance();
+                            tvTotal.setText(String.valueOf(formatoImporte.format(precioTotal)));
+                            tvTituloTotal.setVisibility(View.VISIBLE);
+                            cvTotales.setVisibility(View.VISIBLE);
+                        }else{
+                            tvSinProductos.setVisibility(View.VISIBLE);
                         }
-                        NumberFormat formatoImporte = NumberFormat.getCurrencyInstance();
-                        tvTotal.setText(String.valueOf(formatoImporte.format(precioTotal)));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
