@@ -2,6 +2,7 @@ package com.example.ecommerceapp.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     public List<Product> productList;
     private Context context;
     RequestQueue requestQueue;
+    private SharedPreferences preferences;
+    private String token, _id;
 
     // Obtener referencias de los componentes visuales para cada elemento
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
@@ -84,15 +87,20 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
         holder.btnCarrito.setOnClickListener(v -> {
 
+            //SharedPreferences
+            preferences = context.getSharedPreferences("usuario", Context.MODE_PRIVATE);
+            token = preferences.getString("token", "");
+            _id = preferences.getString("_id", "");
+
             // Mapeo de los pares clave-valor
             HashMap<String, String> parametros = new HashMap();
             parametros.put("producto", product.get_id());
-            parametros.put("cliente", "619d9eca37acb0eafed979f7");
+            parametros.put("cliente", _id);
             parametros.put("cantidad", "1");
 
             // Header (Token)
             Map<String, String> mHeaders = new ArrayMap<String, String>();
-            mHeaders.put("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTlkOWVjYTM3YWNiMGVhZmVkOTc5ZjciLCJub21icmVzIjoiQ2FtaWxvIiwiYXBlbGxpZG9zIjoiRGlheiIsImVtYWlsIjoiY2RpYXpAbWFpbC5jb20iLCJpYXQiOjE2MzgxNTYwODYsImV4cCI6MTYzODc2MDg4Nn0.j8l_iPbx6bwCtLwGiRrJsW5qoZOrvmTdVJbdsqQFUls");
+            mHeaders.put("Authorization", token);
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.POST,

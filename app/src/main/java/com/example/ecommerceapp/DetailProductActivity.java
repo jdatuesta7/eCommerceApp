@@ -6,6 +6,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.ArrayMap;
@@ -47,6 +49,8 @@ public class DetailProductActivity extends AppCompatActivity {
     private Product productDetails;
     private static final String AGREGAR_CARRITO_URL = "https://central-park-ecommerce.herokuapp.com/api/agregar_carrito_cliente";
     RequestQueue requestQueue;
+    private SharedPreferences preferences;
+    private String token, _id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class DetailProductActivity extends AppCompatActivity {
 
         initViews();
         initValues();
+
         requestQueue = Volley.newRequestQueue(this);
 
         Button btnCarrito = findViewById(R.id.btnCarrito);
@@ -103,6 +108,11 @@ public class DetailProductActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence>adapter= ArrayAdapter.createFromResource(this, R.array.cantidades, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         sCantidad.setAdapter(adapter);
+
+        //SharedPreferences
+        preferences = this.getSharedPreferences("usuario", Context.MODE_PRIVATE);
+        token = preferences.getString("token", "");
+        _id = preferences.getString("_id", "");
     }
 
     private void añadirProdCarrito(){
@@ -111,12 +121,12 @@ public class DetailProductActivity extends AppCompatActivity {
         // Mapeo de los pares clave-valor
         HashMap<String, String> parametros = new HashMap();
         parametros.put("producto", productDetails.get_id());
-        parametros.put("cliente", "619d9eca37acb0eafed979f7");
+        parametros.put("cliente", _id);
         parametros.put("cantidad", prodCantidad);
 
         // Header (Token)
         Map<String, String> mHeaders = new ArrayMap<String, String>();
-        mHeaders.put("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTlkOWVjYTM3YWNiMGVhZmVkOTc5ZjciLCJub21icmVzIjoiQ2FtaWxvIiwiYXBlbGxpZG9zIjoiRGlheiIsImVtYWlsIjoiY2RpYXpAbWFpbC5jb20iLCJpYXQiOjE2MzgxNTYwODYsImV4cCI6MTYzODc2MDg4Nn0.j8l_iPbx6bwCtLwGiRrJsW5qoZOrvmTdVJbdsqQFUls");
+        mHeaders.put("Authorization", token);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,

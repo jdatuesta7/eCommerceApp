@@ -1,6 +1,7 @@
 package com.example.ecommerceapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -36,13 +37,15 @@ import java.util.Map;
 public class CartFragment extends Fragment {
 
     RequestQueue requestQueue;
-    private static final String CARRITO_URL = "https://central-park-ecommerce.herokuapp.com/api/obtener_carrito_cliente/619d9eca37acb0eafed979f7";
+    private static final String CARRITO_URL = "https://central-park-ecommerce.herokuapp.com/api/obtener_carrito_cliente/";
     private RecyclerView cRecyclerView;
     private List<Carrito> carrito_cliente = new ArrayList<>();
     private CarritoAdapter carritoAdapter;
     private Context c;
     private TextView tvTotal, tvSinProductos, tvTituloTotal;
     private CardView cvTotales;
+    private SharedPreferences preferences;
+    private String token, _id;
 
     public CartFragment() {
         // Required empty public constructor
@@ -79,6 +82,11 @@ public class CartFragment extends Fragment {
         LinearLayoutManager cLayoutManager = new LinearLayoutManager(c);
         cRecyclerView.setLayoutManager(cLayoutManager);
 
+        //SharedPreferences
+        preferences = c.getSharedPreferences("usuario", Context.MODE_PRIVATE);
+        token = preferences.getString("token", "");
+        _id = preferences.getString("_id", "");
+
         requestQueue = Volley.newRequestQueue(c);
         listarCarritoCliente();
 
@@ -88,11 +96,11 @@ public class CartFragment extends Fragment {
     private void listarCarritoCliente(){
         // Header (Token)
         Map<String, String> mHeaders = new ArrayMap<String, String>();
-        mHeaders.put("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTlkOWVjYTM3YWNiMGVhZmVkOTc5ZjciLCJub21icmVzIjoiQ2FtaWxvIiwiYXBlbGxpZG9zIjoiRGlheiIsImVtYWlsIjoiY2RpYXpAbWFpbC5jb20iLCJpYXQiOjE2MzgxNTYwODYsImV4cCI6MTYzODc2MDg4Nn0.j8l_iPbx6bwCtLwGiRrJsW5qoZOrvmTdVJbdsqQFUls");
+        mHeaders.put("Authorization", token);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                CARRITO_URL,
+                CARRITO_URL + _id,
                 null,
                 response -> {
                     try {
@@ -105,13 +113,11 @@ public class CartFragment extends Fragment {
                                 try {
                                     JSONObject jsonObject = new JSONObject(jsonArray.get(i).toString());
                                     String _id = jsonObject.getString("_id");
-    //                                Toast.makeText(c, "Aumentar 1", Toast.LENGTH_LONG).show();
                                     Product producto = new Product();
                                     producto.set_id(jsonObject.getJSONObject("producto").getString("_id"));
                                     producto.setTitulo(jsonObject.getJSONObject("producto").getString("titulo"));
                                     producto.setPortada(jsonObject.getJSONObject("producto").getString("portada"));
                                     producto.setPrecio(jsonObject.getJSONObject("producto").getDouble("precio"));
-    //                                precioTotal = precioTotal + producto.getPrecio();
 
                                     String cliente = jsonObject.getString("cliente");
                                     int cantidad = jsonObject.getInt("cantidad");

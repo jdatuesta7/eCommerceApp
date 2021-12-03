@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">eCommerceApp</string>
+    <string name="app_name">Central Park App</string>
     <!--    <string name="fragment_home">Inicio</string>-->
     <string name="fragment_cart">Carrito de Compras</string>
     <string name="fragment_discover">Fragment Discover</string>
@@ -31,5 +31,7 @@
         <item>5</item>
         <item>10</item>
     </string-array>
+
+    <string name="logout">Cerrar Sesión</string>
 
 </resources>

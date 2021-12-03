@@ -5,13 +5,17 @@
       <map>
         <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/drawable/ic_delete.xml" value="0.2846153846153846" />
         <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/drawable/ic_search.xml" value="0.2846153846153846" />
-        <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/activity_main.xml" value="0.19882246376811594" />
+        <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.27291666666666664" />
+        <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/carrito_view.xml" value="0.25" />
-        <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/fragment_cart.xml" value="0.25" />
+        <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/fragment_cart.xml" value="0.33" />
         <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/fragment_discover.xml" value="0.33" />
         <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/fragment_edit_text_search.xml" value="0.27291666666666664" />
+        <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/fragment_home.xml" value="0.27291666666666664" />
+        <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/fragment_profile.xml" value="0.27291666666666664" />
         <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/layout/product_view.xml" value="0.27291666666666664" />
         <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/menu/bottom_menu.xml" value="0.27291666666666664" />
+        <entry key="..\:/Android Proyectos/eCommerceApp/app/src/main/res/menu/overflow.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable-v24/ic_shopping_cart_white.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable-v24/style_button_radius.xml" value="0.2890625" />
         <entry key="..\:/Users/Jhonatan SSD/AndroidStudioProjects/eCommerceApp/app/src/main/res/drawable-v24/style_button_radius_delete.xml" value="0.2890625" />

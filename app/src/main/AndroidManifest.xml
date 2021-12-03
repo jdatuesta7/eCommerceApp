@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerceApp">
         <activity
+            android:name=".BottomNavigationActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailProductActivity"
             android:exported="false" />
         <activity

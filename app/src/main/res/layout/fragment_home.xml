@@ -7,6 +7,7 @@
     tools:context=".HomeFragment">
 
     <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
@@ -31,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/horizontal_margin"
-                android:layout_marginTop="25dp"
+
                 android:layout_marginEnd="@dimen/horizontal_margin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +76,8 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvproductsHome"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="42dp">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
