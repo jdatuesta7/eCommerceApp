@@ -44,8 +44,8 @@ public class DiscoverFragment extends Fragment {
     private static final String URL3 = "https://my-json-server.typicode.com/typicode/demo/db";
     private static final String PRODUCTOS_URL = "https://central-park-ecommerce.herokuapp.com/api/listar_productos_publicos/";
     private RecyclerView pRecyclerView;
-    private ProductsAdapter productAdapter;
     private List<Product> products = new ArrayList<>();
+    ProductsAdapter productAdapter;
     public ImageButton btnBuscarProductos;
     private EditText etBuscarProductos;
 
@@ -77,9 +77,9 @@ public class DiscoverFragment extends Fragment {
 
 
         btnBuscarProductos.setOnClickListener(v -> {
-            listarProductos();
-            Toast.makeText(c, "Busqueda realizada" + etBuscarProductos.getText().toString(), Toast.LENGTH_LONG).show();
-
+            this.products.clear();
+            listarProductos(etBuscarProductos.getText().toString());
+            Toast.makeText(c, "Busqueda realizada", Toast.LENGTH_LONG).show();
         });
 
         //Recycler view de Productos
@@ -91,7 +91,7 @@ public class DiscoverFragment extends Fragment {
         pRecyclerView.setLayoutManager(pLayoutManager);
 
         requestQueue = Volley.newRequestQueue(c);
-        listarProductos();
+        listarProductos("");
 
         return root;
     }
@@ -132,11 +132,11 @@ public class DiscoverFragment extends Fragment {
         requestQueue.add(jsonArrayRequest);
     }
 
-    private void listarProductos(){
+    private void listarProductos(String filtro){
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                PRODUCTOS_URL + etBuscarProductos.getText().toString(),
+                PRODUCTOS_URL + filtro,
                 null,
                 response -> {
                     try {
@@ -161,7 +161,6 @@ public class DiscoverFragment extends Fragment {
                                 e.printStackTrace();
                             }
                         }
-
                         //Asignamos todos los datos de la lista al adaptador
                         productAdapter = new ProductsAdapter(this.products);
                         pRecyclerView.setAdapter(productAdapter);
