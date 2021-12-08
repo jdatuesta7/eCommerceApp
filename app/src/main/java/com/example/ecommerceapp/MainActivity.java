@@ -67,15 +67,19 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject res = response.getJSONObject("data");
                             Toast.makeText(this, "Bienvenido, " + res.getString("nombres"), Toast.LENGTH_LONG).show();
 
-                            //SharedPreferences
+                            //Limpiar SharedPreferences
+                            SharedPreferences.Editor editor = getSharedPreferences("usuario", Context.MODE_PRIVATE).edit();
+                            editor.clear().apply();
+
+                            //Guardar Autenticacion SharedPreferences
                             SharedPreferences preferences = getSharedPreferences("usuario", Context.MODE_PRIVATE);
 
                             //Guardar
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("token", response.getString("token"));
-                            editor.putString("_id", res.getString("_id"));
-                            editor.putString("fullname", res.getString("nombres") + " " + res.getString("apellidos"));
-                            editor.commit();
+                            SharedPreferences.Editor edit = preferences.edit();
+                            edit.putString("token", response.getString("token"));
+                            edit.putString("_id", res.getString("_id"));
+                            edit.putString("fullname", res.getString("nombres") + " " + res.getString("apellidos"));
+                            edit.commit();
 
                             //Limpiar Inputs
                             etEmail.setText("");
